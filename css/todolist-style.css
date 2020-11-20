@@ -1,0 +1,244 @@
+/* Input field for To-Do item */
+
+input[id="todo"] {
+	display: block;
+	color: var(--todo-fg);
+	font-family: var(--global-font);
+	font-weight: bold;
+	font-style: normal;
+	font-size: 18px;
+	text-align: center;
+	max-width: 100%;
+	background: transparent;
+	border: none;
+	transition: .3s;
+	border-radius: 6px;
+	padding: 5px;
+}
+
+input[id="todo"]:hover,
+input[id="todo"]:focus {
+	color: var(--todo-bg);
+	background: var(--todo-fg);
+	transform: translateY(-3px);
+	transition: .3s;
+	box-shadow: 0 3px 10px rgba(2, 2, 2, 0.45);
+	outline: none;
+}
+
+input[id="todo"]::placeholder {
+	color: var(--todo-fg);
+	transition: .3s;
+}
+
+input[id="todo"]:focus::placeholder,
+input[id="todo"]:hover::placeholder { 
+	color: var(--todo-bg);
+	transition: .3s;
+}
+
+/* To-Do List container */
+
+#switch_todo:checked ~ .container > .todo_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	font-style: normal;
+	font-size: 18px;
+	text-decoration: none;
+	opacity: 1;
+	transition: 1s;
+	z-index: 1;
+	width: 100%;
+	height: 70%;
+}
+
+#switch_todo:checked ~ .container > .content,
+#switch_todo:checked ~ .container > .search,
+.todo_container {
+	position: absolute;
+	opacity: 0;
+	transition: 0s;
+	z-index: -1;
+}
+
+/* To-Do List checkbox */
+
+.btn_todo {
+	position: absolute;
+	top: calc((45% + 30px));
+	left: -34px;
+}
+
+.chb_todo + label::before,
+.chb_todo + label:hover::before,
+.chb_todo:checked + label::before,
+.chb_todo:checked + label:hover::before {
+	font-family: var(--font-awesome);
+	font-weight: 900;
+	font-size: 20px;
+	content: "\f022";
+	cursor: pointer;
+	transition: .3s;
+}
+
+.chb_todo + label::before {color: #BDBDBD;}
+
+.chb_todo + label:hover::before {color: #9E9E9E;}
+
+.chb_todo:checked + label::before {color: #edc73b;}
+
+.chb_todo:checked + label:hover::before {color: #d9b636;}
+
+/* To-Do List */
+
+.todo-list {
+	list-style: none;
+	width: 80%;
+	overflow: hidden;
+	overflow-y: scroll;
+	margin-top: 10px;
+	scrollbar-width: none;
+	overflow-wrap: anywhere;
+	padding: 10px;
+}
+
+.todo-list:empty {
+	display: none;
+}
+
+.todo-list::-webkit-scrollbar {display: none;}
+
+ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+.todo-item {
+	color: var(--todo-fg);
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: bold;
+	text-align: center;
+
+	border-radius: 6px;
+	padding: 5px 0px;
+	transition: .5s;
+}
+
+.todo-item:nth-child(2n) {color: var(--todo-hover);}
+
+.todo-item:nth-child(2n):hover {
+	color: var(--todo-bg);
+}
+
+.todo-item span {
+	flex-grow: 1;
+	transition: .3s;
+	cursor: pointer;
+}
+
+.todo-item:hover {
+	color: var(--todo-hover);
+	transition: .3s;
+
+	color: var(--todo-bg);
+	background: var(--todo-fg);
+	transform: translateY(-3px);
+	transition: .3s;
+	box-shadow: 0 3px 10px rgba(2, 2, 2, 0.45);
+	outline: none;
+}
+
+/* Mark done button */
+
+.done span {
+	color: var(--todo-done);
+	text-decoration: line-through;
+}
+
+.done:hover span {
+	color: var(--todo-bg);
+	transition: .3s;
+}
+
+.tick::before {
+	font-family: var(--font-awesome);
+	font-weight: 900;
+	content: "\f00c";
+	cursor: pointer;
+	font-size: 17px;
+	display: inline;
+	opacity: 0;
+	transition: .3s;
+	color: var(--todo-input);
+
+	padding: 0 10px;
+}
+
+.todo-item:hover .tick::before {
+	display: inline;
+	opacity: 1;
+	transition: .3s;
+}
+
+.todo-item:hover .tick:hover::before {
+	color: #95ff8f;
+	display: inline;
+	opacity: 1;
+	transition: .3s;
+}
+
+.done .tick::before {
+	color: #95ff8f;
+	opacity: 0;
+}
+
+.todo-item:hover .done .tick::before {opacity: 1;}
+
+/* Delete button */
+
+.delete-todo {
+	border: none;
+	background-color: transparent;
+	outline: none;
+	cursor: pointer;
+}
+
+.fa-times {
+	opacity: 0;
+	transition: .3s;
+	padding: 0 10px;
+	cursor: pointer;
+}
+
+.todo-item:hover .fa-times {
+	opacity: 1;
+	color: var(--todo-input);
+	transition: .3s;
+}
+
+.todo-item:hover .fa-times:hover {
+	color: #d65656;
+	transition: .3s;
+}
+
+/* To-Do items indicator */
+
+.fa-circle {
+	position: absolute;
+	top: 0px;
+	right: -2px;
+	font-size: 6px;
+	cursor: pointer;
+	transition: .3s;
+	color: #8c8c8c;
+}
+
+#switch_todo:checked ~ .btn_todo .fa-circle {
+	color: #b3912d;
+}

@@ -1,0 +1,175 @@
+/* Input field for city name */
+
+input[id="city"] {
+	display: block;
+	color: var(--weather-icon);
+	font-family: var(--global-font);
+	font-weight: bold;
+	font-style: normal;
+	font-size: 18px;
+	text-align: center;
+	max-width: 100%;
+	background: transparent;
+	border: none;
+	transition: .3s;
+	border-radius: 6px;
+	padding: 5px;
+	margin-top: -5px;
+}
+
+input[id="city"]:hover,
+input[id="city"]:focus {
+	color: var(--weather-bg);
+	background: var(--weather-icon);
+	transform: translateY(-3px);
+	transition: .3s;
+	box-shadow: 0 3px 10px rgba(2, 2, 2, 0.45);
+	outline: none;
+}
+
+input[id="city"]::placeholder {
+	color: var(--weather-description);
+	transition: .3s;
+}
+
+input[id="city"]:focus::placeholder,
+input[id="city"]:hover::placeholder { 
+	color: var(--weather-bg);
+	transition: .3s;
+}
+
+/* Weather container */
+
+#switch_weather:checked ~ .container > .weather_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	font-style: normal;
+	font-size: 18px;
+	color: var(--weather-fg);
+	text-decoration: none;
+	opacity: 1;
+	transition: 1s;
+	z-index: 1;
+}
+
+#switch_weather:checked ~ .container > .content,
+#switch_weather:checked ~ .container > .search,
+.weather_container {
+	position: absolute;
+	opacity: 0;
+	transition: 0s;
+	z-index: -1;
+}
+
+/* Weather information */
+
+#icon {
+	font-size: 60px;
+	font-weight: normal;
+	color: var(--weather-icon);
+}
+
+#description {
+	color: var(--weather-description);
+	max-width: 80%;
+	overflow-wrap: break-word;
+	white-space: normal;
+	text-align: center;
+	font-weight: bold;
+}
+
+#temp, #remember {
+	font-weight: bold;
+	color: var(--weather-temp); 
+	transition: .3s;
+	padding: 5px; 
+}
+
+#temp:hover {
+	cursor: pointer;
+	color: var(--weather-icon);
+	transition: .3s;
+}
+
+/* Weather checkbox */
+
+.btn_weather {
+	position: absolute;
+	top: calc((45% + 0px));
+	left: -35px;
+}
+
+.chb_weather + label::before,
+.chb_weather + label:hover::before,
+.chb_weather:checked + label::before,
+.chb_weather:checked + label:hover::before {
+	font-family: var(--font-awesome);
+	font-weight: 900;
+	font-size: 18px;
+	content: "\f0c2";
+	cursor: pointer;
+	transition: .3s;
+}
+
+.chb_weather + label::before {color: #BDBDBD;}
+
+.chb_weather + label:hover::before {color: #9E9E9E;}
+
+.chb_weather:checked + label::before {color: #7986CB;}
+
+.chb_weather:checked + label:hover::before {color: #5C6BC0;}
+
+/* Weather update button */
+
+.btn_weather_update {display: none;}
+
+.weather_update_button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	opacity: 0;
+	z-index: -1;
+	transition: 0s;
+}
+
+#switch_weather:checked ~ .container > .weather_update_button {
+	opacity: 1;
+	transition: 1.5s;
+	z-index: 1;
+}
+
+.btn_weather_update + label::before,
+.btn_weather_update + label:hover::before {
+	font-family: var(--font-awesome);
+	font-weight: 900;
+	font-size: 17px;
+	content: "\f2f1";
+	cursor: pointer;
+	transition: .3s;
+}
+
+.btn_weather_update + label::before {color: var(--weather-upd);}
+
+.btn_weather_update + label:hover::before {color: var(--weather-upd-hover);}
+
+.spin {
+	position: absolute;
+	top: 0;
+	right: 0;
+	transition: 0s;
+	animation: spin 1s;
+	-webkit-animation: spin 1s;
+	animation-iteration-count: 1;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
