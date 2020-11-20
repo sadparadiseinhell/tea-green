@@ -106,8 +106,8 @@ input[type="checkbox"] {display: none;}
 	justify-content: center;
 	align-items: center;
 	background: var(--card-bg);
-	/*min-width: 310px;
-	min-height: 200px;*/
+	min-width: 310px;
+	min-height: 200px;
 	border-radius: 8px;
 	box-shadow: 0px 2px 25px var(--container-shadow-color);
 	transition: width .5s, height .5s, background-color .7s, box-shadow .7s;
