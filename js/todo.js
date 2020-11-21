@@ -95,10 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function addNotificationBadge() {
-var done = (localStorage.getItem('todoItems').match(new RegExp("false", "g")) || []).length;
-	if (done > 0) {
-		document.querySelector('.btn_todo').innerHTML = '<i class="fas fa-circle"></i>';
-	} else {
-		document.querySelector('.btn_todo').innerHTML = '';
+	let items = localStorage.getItem('todoItems');
+	if (items != '[]' && items != null) {
+		let done = (localStorage.getItem('todoItems').match(new RegExp("false", "g")) || []).length;
+		if (done > 0) {
+			document.querySelector('.btn_todo').innerHTML = '<i class="fas fa-circle"></i>';
+		} else {
+			document.querySelector('.btn_todo').innerHTML = '';
+		}
 	}
 }
