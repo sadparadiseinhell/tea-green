@@ -32,5 +32,6 @@ The resulting key must be added to the corresponding line in the `weather.js` fi
 ```js
 const key = 'your key';
 ```
+> If you generated a **new** API key and the weather doesn't work, then try to wait for a while until the key is activated.
 
 As weather icons I used icons from [this project](https://github.com/erikflowers/weather-icons#readme).
