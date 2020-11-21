@@ -28,14 +28,16 @@ function getcity() {
 
 function city() {
 	if (event.keyCode == 13) {
-		let city_name = document.getElementById("city").value;
+		let city_input = document.getElementById('city');
+		let city_name = city_input.value;
 		getWeatherInfo(city_name);
 
 		localStorage.setItem('city', city_name);
 		let city_ls = localStorage.getItem('city');
 		console.log(city_ls);
 		document.getElementsByName('city_field')[0].placeholder = city_ls;
-		document.getElementById('city').value = '';
+		city_input.value = '';
+		city_input.blur();
 		document.getElementById('temp').style.padding = '5px';
 	}
 }
