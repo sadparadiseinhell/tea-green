@@ -8,22 +8,18 @@ if (key == '') {
 	document.getElementById('remember').style.display = 'none';
 }
 
-getcity();
-function getcity() {
-	if (localStorage.getItem('city') == null) {
-		if (key == '') {
-			document.querySelector('input[id="city"]').style.display = 'none';
-		} else {
-			console.log(':(');
-			document.getElementById('temp').style.padding = '0px';
-		}
-		
+if (localStorage.getItem('city') == null) {
+	if (key == '') {
+		document.querySelector('input[id="city"]').style.display = 'none';
 	} else {
-		var city_name = localStorage.getItem('city');
-		getWeatherInfo(city_name);
-		console.log(':)');
-		document.getElementsByName('city_field')[0].placeholder = city_name;
+		document.querySelector('.weather_update_button').style.display = 'none';
+		console.log(':(');
 	}
+} else {
+	var city_name = localStorage.getItem('city');
+	getWeatherInfo(city_name);
+	document.getElementsByName('city_field')[0].placeholder = city_name;
+	console.log(':)');
 }
 
 function city() {
@@ -38,7 +34,7 @@ function city() {
 		document.getElementsByName('city_field')[0].placeholder = city_ls;
 		city_input.value = '';
 		city_input.blur();
-		document.getElementById('temp').style.padding = '5px';
+		document.querySelector('.weather_update_button').style.display = '';
 	}
 }
 
@@ -56,8 +52,8 @@ function update() {
 function getWeatherInfo(city_name) {
 	fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${key}`)
 	.then(function (response) {
-            return response.json();
-        })
+		return response.json();
+	})
 	.then(function (data) {
 		celcius = Math.round(parseFloat(data.main.temp)-273.15);
 		fahrenheit = Math.round(((parseFloat(data.main.temp)-273.15)*1.8)+32);

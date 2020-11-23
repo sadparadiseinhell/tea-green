@@ -14,7 +14,6 @@ input[id="city"] {
 	transition: .3s;
 	border-radius: 6px;
 	padding: 5px;
-	margin-top: -5px;
 }
 
 input[id="city"]:hover,
@@ -85,13 +84,19 @@ input[id="city"]:hover::placeholder {
 	font-weight: bold;
 	color: var(--weather-temp); 
 	transition: .3s;
-	padding: 5px; 
+	padding: 5px;
+	margin-bottom: -5px;
 }
 
 #temp:hover {
 	cursor: pointer;
 	color: var(--weather-icon);
 	transition: .3s;
+}
+
+#temp:empty {
+	padding: 0px;
+	margin: 0px;
 }
 
 /* Weather checkbox */
