@@ -1,20 +1,16 @@
 /* Fonts */
-
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&display=swap|Noto+Sans|Open+Sans:wght@300;400;700|Roboto:400&display=swap&subset=cyrillic');
 
 /* Weather icon styles */
-
 @import url('../css/weather-icons-wind.css');
 @import url('../css/weather-icons.css');
 
 /* Weather and To-Do List styles */
-
 @import url('../css/todolist-style.css');
 @import url('../css/weather-style.css');
 
 /* Light theme */
-
 :root {
 	--roboto: 'Roboto', sans-serif;
 	--noto-sans: 'Noto Sans', sans-serif;
@@ -50,7 +46,6 @@
 }
 
 /* Dark theme */
-
 [theme="dark"] {
 	--background: #101112;
 	--foreground: #858585;
@@ -82,18 +77,12 @@ html {
 
 body {
 	background: var(--background);
-	transition: .5s;
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
 	display: flex;
 	align-items: center;
-	align-content: center; 
-	justify-content: center; 
-	overflow: auto;
-	flex-direction: row;
+	justify-content: center;
+	height: 100vh;
+	overflow: hidden;
+	transition: .5s;
 }
 
 input[type="checkbox"] {display: none;}
@@ -106,8 +95,8 @@ input[type="checkbox"] {display: none;}
 	justify-content: center;
 	align-items: center;
 	background: var(--card-bg);
-	min-width: 310px;
-	min-height: 200px;
+	width: 340px;
+	height: 240px;
 	border-radius: 8px;
 	box-shadow: 0px 2px 25px var(--container-shadow-color);
 	transition: width .5s, height .5s, background-color .7s, box-shadow .7s;
@@ -137,12 +126,11 @@ input[type="checkbox"] {display: none;}
 }
 
 .wrapper {
-	display: grid;
+	display: flex;
+	align-items: center;
 	justify-content: center;
-	align-content: center;
-	grid-auto-flow: row;
-	grid-template-areas: "a a a a";
-	margin: 10px 5px;
+	flex-wrap: wrap;
+	flex-direction: row;
 }
 
 a {
@@ -204,7 +192,6 @@ input[id="searchbox"]:hover::placeholder {
 }
 
 /* Theme checkbox */
-
 .btn_theme {
 	position: absolute;
 	top: calc((45% - 30px));
