@@ -1,78 +1,70 @@
-// theme switcher
+// Theme switcher
+var switcher = document.getElementById('switch_theme');
 
-let switcher = document.getElementById('switch_theme');
+function darkTheme() {
+	switcher.checked = true;
+	localStorage.setItem('switch', 'on');
+	document.body.setAttribute('theme', 'dark');	
+}
+
+function lightTheme() {
+	switcher.checked = false;
+	localStorage.setItem('switch', 'off');
+	document.body.removeAttribute('theme');	
+}
+
 switcher.onclick = function() {
 	if (switcher.checked) {
-		localStorage.setItem('switch_theme', "true");
-		document.body.setAttribute("theme","dark");
+		darkTheme();
 	} else {
-		localStorage.setItem('switch_theme', "false");
-		document.body.removeAttribute("theme");
+		lightTheme();
 	}
 }
 
-if (localStorage.getItem('switch_theme') == "true") {
-	switcher.setAttribute('checked','checked');
-	document.body.setAttribute("theme","dark");
+if (localStorage.getItem('switch') == 'on') {
+	darkTheme();
 }
 
-/*const today = new Date();
-const hr = today.getHours();
-if (hr >= 17 || hr < 5) {
-	switcher.setAttribute('checked','checked');
-	localStorage.setItem('switch_theme', "true");
-	document.body.setAttribute("theme","dark");
+// Automatic theme change depending on the time of day
+var today = new Date();
+var hour = today.getHours();
+
+if (hour >= 17 || hour < 6) {
+	darkTheme();
 } else {
-	switcher.removeAttribute('checked');
-	localStorage.setItem('switch_theme', "false");
-	document.body.removeAttribute("theme");
-}*/
-
-// set width and height of the container on start
-
-function setWidthHeight() {
-	let block = document.querySelector('.container');
-
-	/*block.style.minWidth = block.offsetWidth + 1 + 'px';
-	block.style.minHeight = block.offsetHeight + 1 + 'px';*/
-	block.style.width = block.offsetWidth + 1 + 'px';
-	block.style.height = block.offsetHeight + 1 + 'px';
+	lightTheme();
 }
 
-setWidthHeight();
+// Remember weather checkbox value
+var chbWeather = document.getElementById('switch_weather');
 
-// remember weather checkbox value
-
-var checkbox = document.getElementById("switch_weather");
-
-checkbox.onclick = function() {
-	if (checkbox.checked) {
-		localStorage.setItem('switch_weather', "true");
+chbWeather.onclick = function() {
+	if (chbWeather.checked) {
+		localStorage.setItem('switch_weather', 'true');
 		document.getElementById('switch_todo').checked = false;
-		localStorage.setItem('switch_todo', "false");
+		localStorage.setItem('switch_todo', 'false');
 	} else {
-		localStorage.setItem('switch_weather', "false");
+		localStorage.setItem('switch_weather', 'false');
 	}
 }
 
-if (localStorage.getItem('switch_weather') == "true") {
-  checkbox.setAttribute('checked','checked');
+if (localStorage.getItem('switch_weather') == 'true') {
+  chbWeather.setAttribute('checked','checked');
 }
 
-// remember to-do list checkbox value
+// Remember to-do list checkbox value
+var chbTodo = document.getElementById('switch_todo');
 
-var tdcheckbox = document.getElementById("switch_todo");
-
-tdcheckbox.onclick = function() {
-	if (tdcheckbox.checked) {
-		localStorage.setItem('switch_todo', "true");
-		document.getElementById("switch_weather").checked = false;
-		localStorage.setItem('switch_weather', "false");
+chbTodo.onclick = function() {
+	if (chbTodo.checked) {
+		localStorage.setItem('switch_todo', 'true');
+		document.getElementById('switch_weather').checked = false;
+		localStorage.setItem('switch_weather', 'false');
 	} else {
-		localStorage.setItem('switch_todo', "false");
+		localStorage.setItem('switch_todo', 'false');
 	}
 }
 
-if (localStorage.getItem('switch_todo') == "true") {
-	tdcheckbox.setAttribute('checked','checked');
+if (localStorage.getItem('switch_todo') == 'true') {
+	chbTodo.setAttribute('checked','checked');
 }
