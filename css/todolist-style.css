@@ -1,5 +1,4 @@
 /* Input field for To-Do item */
-
 input[id="todo"] {
 	display: block;
 	color: var(--todo-fg);
@@ -38,7 +37,6 @@ input[id="todo"]:hover::placeholder {
 }
 
 /* To-Do List container */
-
 #switch_todo:checked ~ .container > .todo_container {
 	display: flex;
 	flex-direction: column;
@@ -65,7 +63,6 @@ input[id="todo"]:hover::placeholder {
 }
 
 /* To-Do List checkbox */
-
 .btn_todo {
 	position: absolute;
 	top: calc((45% + 30px));
@@ -93,7 +90,6 @@ input[id="todo"]:hover::placeholder {
 .chb_todo:checked + label:hover::before {color: #d9b636;}
 
 /* To-Do List */
-
 .todo-list {
 	list-style: none;
 	width: 80%;
@@ -155,7 +151,6 @@ ul {
 }
 
 /* Mark done button */
-
 .done span {
 	color: var(--todo-done);
 	text-decoration: line-through;
@@ -201,7 +196,6 @@ ul {
 .todo-item:hover .done .tick::before {opacity: 1;}
 
 /* Delete button */
-
 .delete-todo {
 	border: none;
 	background-color: transparent;
@@ -228,7 +222,6 @@ ul {
 }
 
 /* To-Do items indicator */
-
 .fa-circle {
 	position: absolute;
 	top: 0px;

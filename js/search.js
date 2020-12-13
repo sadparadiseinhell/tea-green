@@ -14,43 +14,43 @@ String.prototype.replaceChars = function(character, replacement) {
 
 function search(query) {
 	switch(query.substr(0, 2)){
-		case "-d":
+		case '-d':
 			query = query.substr(3);
-			window.open("https://duckduckgo.com/" +
-			query.replaceChars(" ", "%20"), '_blank');
+			window.open('https://duckduckgo.com/' +
+			query.replaceChars(' ', '%20'), '_blank');
 		break;
-		case "-y":
+		case '-y':
 			query = query.substr(3);
-			window.open("https://www.youtube.com/results?search_query=" +
-			query.replaceChars(" ", "%20"), '_blank');
+			window.open('https://www.youtube.com/results?search_query=' +
+			query.replaceChars(' ', '%20'), '_blank');
 		break;
-		case "-w":
-			query = query.substr(3);
-			window.open(
-			"https://ru.wikipedia.org/w/index.php?search=" +
-			query.replaceChars(" ", "%20"), '_blank');
-		break;
-		case "-r":
+		case '-w':
 			query = query.substr(3);
 			window.open(
-			"https://www.reddit.com/search?q=" + 
-			query.replaceChars(" ", "%20"), '_blank');
+			'https://ru.wikipedia.org/w/index.php?search=' +
+			query.replaceChars(' ', '%20'), '_blank');
 		break;
-		case "-h":
+		case '-r':
+			query = query.substr(3);
+			window.open(
+			'https://www.reddit.com/search?q=' + 
+			query.replaceChars(' ', '%20'), '_blank');
+		break;
+		case '-h':
 			query=query.substr(3);
 			window.open( 
-			"https://wallhaven.cc/search?q=" + 
-			query.concat("&categories=110&purity=100&atleast=1920x1080&sorting=relevance&order=desc"), '_blank');
+			'https://wallhaven.cc/search?q=' + 
+			query.concat('&categories=110&purity=100&atleast=1920x1080&sorting=relevance&order=desc'), '_blank');
 		break;
 		default:
-			window.open("https://www.google.com/#q=" +
-			query.replaceChars(" ", "%20"), '_blank');
+			window.open('https://www.google.com/#q=' +
+			query.replaceChars(' ', '%20'), '_blank');
 	}
 }
 
-searchinput = document.getElementById("searchbox");
+searchinput = document.getElementById('searchbox');
 if (!!searchinput) {
-	searchinput.addEventListener("keypress", function(a) {
+	searchinput.addEventListener('keypress', function(a) {
 	var key = a.keyCode;
 	if (key == 13) {
 		var query = this.value;
