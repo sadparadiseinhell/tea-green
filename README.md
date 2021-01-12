@@ -27,11 +27,7 @@ To add your own link to your favorite site, you just need to add a line to the H
 
 ### Weather Setting
 To display the weather you need to have a free API key, which can be obtained from the [OpenWeatherMap](https://openweathermap.org/api) website.
-The resulting key must be added to the corresponding line in the `weather.js` file:
 
-```js
-const key = 'your key';
-```
 > If you generated a **new** API key and the weather doesn't work, then try to wait for a while until the key is activated.
 
 As weather icons I used icons from [this project](https://github.com/erikflowers/weather-icons#readme).
