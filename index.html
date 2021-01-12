@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="icon" href="fav.png">
-		<title>Tea Green</title>
-	</head>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="icon" href="fav.png">
+	<title>Tea Green</title>
+</head>
+
 <body>
-	<div class="tilt" data-tilt data-tilt-max="5" data-tilt-speed="3000" data-tilt-perspective="500" data-tilt-reverse="true">
-		<input type="checkbox"  class="chb_theme" id="switch_theme">
-		<label class="btn_theme" for="switch_theme"></label>
-
-		<input type="checkbox" class="chb_weather" id="switch_weather">
-		<label class="btn_weather" for="switch_weather"></label>
-
-		<input type="checkbox"  class="chb_todo" id="switch_todo">
-		<label class="btn_todo" for="switch_todo"></label>
-		<div class="container">
-			<div class="weather_container">
-				<f id="remember"></f>
-				<i id="icon"></i>
-				<f id="description"></f>
-				<f id="temp"></f>
-				<input id="city" type="text" placeholder="enter the name of the city" name="city_field">
+	<div class="tilt" data-tilt data-tilt-max="5" data-tilt-speed="3000" data-tilt-perspective="500"
+		data-tilt-reverse="true">
+		<div class="card">
+			<div class="buttons">
+				<input type="checkbox" class="chb_theme" id="switch_theme">
+				<label class="btn_theme" for="switch_theme"></label>
+				<input type="checkbox" class="chb_weather" id="switch_weather">
+				<label class="btn_weather" for="switch_weather"></label>
+				<input type="checkbox" class="chb_todo" id="switch_todo">
+				<label class="btn_todo" for="switch_todo"></label>
 			</div>
-			<div class="todo_container">        
-				<form class="js-form">       
-					<input id="todo" placeholder="what needs to be done?" class="js-todo-input" type="text" autofocus="true" autocomplete="off">
+			<div class="weather-card">
+				<div class="weather-card__info">
+					<i id="icon"></i>
+					<p id="description"></p>
+					<p id="temp"></p>
+				</div>
+				<input id="city" type="text" placeholder="enter the name of the city" autocomplete="off">
+				<input id="key" type="text" placeholder="add your api key" autocomplete="off">
+			</div>
+			<div class="todo-card">
+				<form class="todo-card__form">
+					<input id="todo" placeholder="what needs to be done?" class="todo-card__form-input" type="text"
+						autocomplete="off">
 				</form>
-				<ul class="todo-list js-todo-list"></ul>
+				<ul class="todo-card__list"></ul>
 			</div>
 			<div class="content">
-				<div class="wrapper">
+				<div class="links">
 					<a href="https://twitter.com/" target="_blank">
 						<i class="fab fa-twitter"></i>
 					</a>
@@ -57,9 +63,9 @@
 						<i class="fab fa-reddit"></i>
 					</a>
 				</div>
-			</div>
-			<div class="search">
-				<input id="searchbox" placeholder="-d | -y | -w | -r | -h" type="text" autofocus="true" autocomplete="off"></input>
+				<div class="search">
+					<input id="searchbox" placeholder="-d | -y | -w | -r | -h" type="text" autocomplete="off">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -69,6 +75,7 @@
 	<script src="js/todo.js"></script>
 	<script src="js/search.js"></script>
 	<script src="js/vanilla-tilt.js"></script>
-	
+
 </body>
+
 </html>

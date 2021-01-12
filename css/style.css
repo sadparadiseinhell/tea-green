@@ -23,16 +23,13 @@
 	--background: #fff;
 	--foreground: #7a8c70;
 	--header: #5C6657;
-	/*--card-bg: #d0f0c0;*/
 	--card-bg: #c1ecac;
 
 	--weather-fg: #C5CAE9;
-	--weather-bg: #5C6BC0;
+	--weather-bg: #3c4b96;
 	--weather-icon: #E8EAF6;
 	--weather-temp: #C5CAE9;
 	--weather-description: #9FA8DA;
-	--weather-upd: #7986CB;
-	--weather-upd-hover: #E8EAF6;
 
 	--todo-bg: #f2e69d;
 	--todo-fg: #807a53;
@@ -42,7 +39,7 @@
 
 	--search: #a6bf99;
 
-	--container-shadow-color: rgba(0, 0, 0, 0.35);
+	--card-shadow-color: rgba(0, 0, 0, 0.35);
 }
 
 /* Dark theme */
@@ -57,8 +54,7 @@
 	--weather-icon: #E0E0E0;
 	--weather-temp: var(--weather-fg);
 	--weather-description: #9E9E9E;
-	--weather-upd: #757575;
-	--weather-upd-hover: #E0E0E0;
+
 	--todo-bg: var(--card-bg);
 	--todo-fg: #a6a6a6;
 	--todo-hover: #737373;
@@ -67,11 +63,12 @@
 
 	--search: #737373;
 
-	--container-shadow-color: rgba(0, 0, 0, 0.45);
+	--card-shadow-color: rgba(0, 0, 0, 0.45);
 }
 
-html {
-	font-size: 18px;
+* {
+	box-sizing: content-box;
+	margin: 0;
 	font-family: var(--global-font);
 }
 
@@ -89,7 +86,8 @@ input[type="checkbox"] {display: none;}
 
 .tilt {position: absolute;}
 
-.container {
+.card {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -98,54 +96,62 @@ input[type="checkbox"] {display: none;}
 	width: 340px;
 	height: 240px;
 	border-radius: 8px;
-	box-shadow: 0px 2px 25px var(--container-shadow-color);
-	transition: width .5s, height .5s, background-color .7s, box-shadow .7s;
+	box-shadow: 0px 2px 25px var(--card-shadow-color);
+	transition: background-color .7s, box-shadow .7s;
 }
 
-#switch_weather:checked ~ .container {
+.weather-card-color {
 	background: var(--weather-bg);
-	transition: width .5s, height .5s, background-color .7s, box-shadow .7s;
 	box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.45);
+	transition: background-color 1s, box-shadow 1s;
 }
 
-#switch_todo:checked ~ .container {
+.todo-card-color {
 	background: var(--todo-bg);
-	transition: width .5s, height .5s, background-color .7s, box-shadow .7s;
-	box-shadow: 0px 2px 20px var(--container-shadow-color);
+	box-shadow: 0px 2px 20px var(--card-shadow-color);
+	transition: background-color 1s, box-shadow 1s;
+}
+
+.hide {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
 }
 
 .content {
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	transition: .5s;
+}
+
+.links {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
 	margin: 25px 25px 0px 25px;
 	opacity: 1;
 	transition: 1s;
 	z-index: 1;
 }
 
-.wrapper {
+a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-wrap: wrap;
-	flex-direction: row;
-}
-
-a {
-	display: flex;
-	justify-content: center;
 	text-decoration: none;
+	color: var(--foreground);
 	outline: none;
+	font-size: 30px;
 	width: 30px;
 	height: 30px;
-	font-size: 30px;
 	padding: 15px;
 	margin: 5px;
 	border-radius: 8px;
 	transition: .2s;
-	color: var(--foreground);
 }
 
 a:hover,
@@ -193,9 +199,6 @@ input[id="searchbox"]:hover::placeholder {
 
 /* Theme checkbox */
 .btn_theme {
-	position: absolute;
-	top: calc((45% - 30px));
-	left: -34px;
 	transform: rotate(-25deg);
 }
 
@@ -218,3 +221,17 @@ input[id="searchbox"]:hover::placeholder {
 .chb_theme:checked + label::before {color: #FFD740;}
 
 .chb_theme:checked + label:hover::before {color: #bfa132;}
+
+.buttons {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	left: -35px;
+}
+
+.btn_theme,
+.btn_weather,
+.btn_todo {
+	margin: 5px 0px;
+}

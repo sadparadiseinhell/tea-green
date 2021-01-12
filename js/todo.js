@@ -3,22 +3,22 @@ let todoItems = [];
 function renderTodo(todo) {
 	localStorage.setItem('todoItems', JSON.stringify(todoItems));
 
-	const list = document.querySelector('.js-todo-list');
+	const list = document.querySelector('.todo-card__list');
 	const item = document.querySelector(`[data-key='${todo.id}']`);
-  
+
 	if (todo.deleted) {
 		item.remove();
 		if (todoItems.length === 0) list.innerHTML = '';
 		return
 	}
 
-	const isChecked = todo.checked ? 'done': '';
+	const isChecked = todo.checked ? 'done' : '';
 	const node = document.createElement("li");
 	node.setAttribute('class', `todo-item ${isChecked}`);
 	node.setAttribute('data-key', todo.id);
 	node.innerHTML = `
 		<input id="${todo.id}" type="checkbox"/>
-		<label for="${todo.id}" class="tick js-tick"></label>
+		<label for="${todo.id}" class="tick"></label>
 		<span>${todo.text}</span>
 		<i class='fas fa-times'></i>
 		`;
@@ -51,18 +51,18 @@ function toggleDone(key) {
 function deleteTodo(key) {
 	const index = todoItems.findIndex(item => item.id === Number(key));
 	const todo = {
-	deleted: true,
-	...todoItems[index]
+		deleted: true,
+		...todoItems[index]
 	};
 	todoItems = todoItems.filter(item => item.id !== Number(key));
 	renderTodo(todo);
 	addNotificationBadge();
 }
 
-const form = document.querySelector('.js-form');
+const form = document.querySelector('.todo-card__form');
 form.addEventListener('submit', event => {
 	event.preventDefault();
-	const input = document.querySelector('.js-todo-input');
+	const input = document.querySelector('.todo-card__form-input');
 
 	const text = input.value.trim();
 	if (text !== '') {
@@ -72,11 +72,11 @@ form.addEventListener('submit', event => {
 	}
 });
 
-const list = document.querySelector('.js-todo-list');
+const list = document.querySelector('.todo-card__list');
 list.addEventListener('click', event => {
 	const itemKey = event.target.parentElement.dataset.key;
 	toggleDone(itemKey);
-  
+
 	if (event.target.classList.contains('fas')) {
 		const itemKey = event.target.parentElement.dataset.key;
 		deleteTodo(itemKey);
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function addNotificationBadge() {
 	let items = localStorage.getItem('todoItems');
-	if (items != '[]' && items != null) {
+	if (items !== '[]' && items !== null) {
 		let done = (localStorage.getItem('todoItems').match(new RegExp("false", "g")) || []).length;
 		if (done > 0) {
 			document.querySelector('.btn_todo').innerHTML = '<i class="fas fa-circle"></i>';

@@ -1,13 +1,12 @@
 /* Input field for city name */
-input[id="city"] {
-	display: block;
+input[id="city"],
+input[id="key"] {
 	color: var(--weather-icon);
 	font-family: var(--global-font);
 	font-weight: bold;
 	font-style: normal;
 	font-size: 18px;
 	text-align: center;
-	max-width: 100%;
 	background: transparent;
 	border: none;
 	transition: .3s;
@@ -15,6 +14,8 @@ input[id="city"] {
 	padding: 5px;
 }
 
+input[id="key"]:hover,
+input[id="key"]:focus,
 input[id="city"]:hover,
 input[id="city"]:focus {
 	color: var(--weather-bg);
@@ -24,45 +25,43 @@ input[id="city"]:focus {
 	box-shadow: 0 3px 10px rgba(2, 2, 2, 0.45);
 	outline: none;
 }
+input[id="key"]::placeholder,
 input[id="city"]::placeholder {
 	color: var(--weather-description);
 	transition: .3s;
 }
 
+input[id="key"]:focus::placeholder,
+input[id="key"]:hover::placeholder, 
 input[id="city"]:focus::placeholder,
 input[id="city"]:hover::placeholder { 
 	color: var(--weather-bg);
 	transition: .3s;
 }
 
-/* Weather container */
-#switch_weather:checked ~ .container > .weather_container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+/* Weather card */
+.weather-card {
+	position: absolute;
 	font-weight: bold;
 	font-style: normal;
 	font-size: 18px;
 	color: var(--weather-fg);
 	text-decoration: none;
-	opacity: 1;
-	transition: 1s;
-	z-index: 1;
-}
-#switch_weather:checked ~ .container > .content,
-#switch_weather:checked ~ .container > .search,
-.weather_container {
-	position: absolute;
 	opacity: 0;
-	transition: 0s;
+	transition: .5s;
 	z-index: -1;
 }
 
 /* Weather information */
+.weather-card__info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
 #icon {
 	font-size: 60px;
-	font-weight: normal;
 	color: var(--weather-icon);
 }
 
@@ -95,12 +94,6 @@ input[id="city"]:hover::placeholder {
 }
 
 /* Weather checkbox */
-.btn_weather {
-	position: absolute;
-	top: calc((45% + 0px));
-	left: -35px;
-}
-
 .chb_weather + label::before,
 .chb_weather + label:hover::before,
 .chb_weather:checked + label::before,
