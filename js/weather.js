@@ -21,7 +21,7 @@ if (key === null) {
 }
 
 keyInput.addEventListener('keyup', event => {
-	if (event.keyCode === 13) {
+	if (event.code === 'Enter') {
 		let key = keyInput.value;
 		localStorage.setItem('key', key);
 		keyInput.style.display = 'none';
@@ -31,7 +31,7 @@ keyInput.addEventListener('keyup', event => {
 });
 
 cityInput.addEventListener('keyup', event => {
-	if (event.keyCode === 13) {
+	if (event.code === 'Enter') {
 		let key = localStorage.getItem('key');
 		let cityName = cityInput.value;
 		localStorage.setItem('city', cityName);
